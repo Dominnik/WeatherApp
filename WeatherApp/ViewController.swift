@@ -9,12 +9,35 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        getRequest()
     }
-
-
+    
+    func getRequest() {
+        
+        let jsonUrlString = "https://samples.openweathermap.org/data/2.5/weather?q=London,uk&appid=d988069c070ff798d8c1fea149be599a"
+        
+        guard let url = URL(string: jsonUrlString) else { return }
+        
+        URLSession.shared.downloadTask(with: url) { (location, response, error) in
+            
+            let weatherData = try? Data(contentsOf: url)
+            
+            do {
+                let weatherJson = try JSONSerialization.jsonObject(with: weatherData!, options: []) as! Dictionary<String, Any>
+                let weather = WeatherModel(weatherJson: weatherJson)
+                
+                print(weather.nameCity, Int(weather.temp))
+            } catch {
+                print(error)
+            }
+        }.resume()
+        
+        
+    }
+    
 }
 
