@@ -17,6 +17,8 @@ final public class APIServices {
     
     public static let eventMethod = "/data/2.5/forecast"
     
+//    public static let iconMethod = "/img/wn/"
+    
     public func getObject<T:Codable>(
         method: String,
         params: Parameters,

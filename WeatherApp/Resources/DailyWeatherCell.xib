@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DailyWeatherCell" rowHeight="130" id="KGk-i7-Jjw" customClass="DailyWeatherCell" customModule="WeatherApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="130"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="130"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AfV-IN-bO8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WLl-fP-6dp">
+                                <rect key="frame" x="0.0" y="0.0" width="40" height="60"/>
+                                <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="BJP-U9-5tC"/>
+                                    <constraint firstAttribute="width" constant="40" id="aQH-le-c1X"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SpM-wP-UC6">
+                                <rect key="frame" x="40" y="0.0" width="40" height="60"/>
+                                <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="Rdv-Ar-Z6L"/>
+                                    <constraint firstAttribute="width" constant="40" id="cxl-jU-ULS"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rM6-YO-vRV">
+                                <rect key="frame" x="80" y="0.0" width="40" height="60"/>
+                                <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="iYL-3C-DG3"/>
+                                    <constraint firstAttribute="height" constant="60" id="r9z-03-82g"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vvb-4y-k4W">
+                                <rect key="frame" x="120" y="0.0" width="40" height="60"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="aSr-Ry-s1U"/>
+                                    <constraint firstAttribute="height" constant="60" id="hcg-8V-6Lg"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cha-df-YGE">
+                                <rect key="frame" x="160" y="0.0" width="40" height="60"/>
+                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="RfG-NJ-pHQ"/>
+                                    <constraint firstAttribute="width" constant="40" id="Tkm-tJ-q96"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jEp-SN-FKc">
+                                <rect key="frame" x="200" y="0.0" width="40" height="60"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="0ts-E8-mrP"/>
+                                    <constraint firstAttribute="width" constant="40" id="L4I-Dk-cWe"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zU7-sZ-eT1">
+                                <rect key="frame" x="240" y="0.0" width="40" height="60"/>
+                                <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="2gG-p2-d37"/>
+                                    <constraint firstAttribute="height" constant="60" id="uzd-31-Xsp"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="teM-nw-CBX">
+                                <rect key="frame" x="280" y="0.0" width="40" height="60"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="Ugk-p0-yjq"/>
+                                    <constraint firstAttribute="width" constant="40" id="Yrj-eU-wk4"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                    </stackView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-22°C" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XeA-9f-BGd">
+                        <rect key="frame" x="164" y="29" width="140" height="90"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="140" id="Xuf-RL-kBE"/>
+                            <constraint firstAttribute="height" constant="90" id="zZn-Xf-jAR"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="55"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloud.sun.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Yh2-GR-7Kt">
+                        <rect key="frame" x="16" y="27.5" width="90" height="89"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="90" id="Ncu-1R-ykI"/>
+                            <constraint firstAttribute="height" constant="90" id="pkc-cp-5TY"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Дата" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sIV-8a-OzA">
+                        <rect key="frame" x="142" y="10" width="36" height="20"/>
+                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="18"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="XeA-9f-BGd" secondAttribute="bottom" constant="11" id="1r6-Eu-ncf"/>
+                    <constraint firstItem="Yh2-GR-7Kt" firstAttribute="top" secondItem="sIV-8a-OzA" secondAttribute="bottom" constant="-1" id="Wzd-Ny-BgT"/>
+                    <constraint firstItem="sIV-8a-OzA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="cCm-7E-6nJ"/>
+                    <constraint firstAttribute="trailing" secondItem="XeA-9f-BGd" secondAttribute="trailing" constant="16" id="cRG-aX-zOI"/>
+                    <constraint firstItem="sIV-8a-OzA" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="ecb-IL-hB4"/>
+                    <constraint firstItem="XeA-9f-BGd" firstAttribute="top" secondItem="sIV-8a-OzA" secondAttribute="bottom" constant="-1" id="fiW-1m-KVV"/>
+                    <constraint firstItem="Yh2-GR-7Kt" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="nuW-bB-dNw"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="subviews">
+                        <exclude reference="AfV-IN-bO8"/>
+                    </mask>
+                </variation>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="dateValueLabel" destination="sIV-8a-OzA" id="RxI-Sm-egs"/>
+                <outlet property="weatherIconImage" destination="Yh2-GR-7Kt" id="c8Q-mL-JNO"/>
+                <outlet property="weatherValueLabel" destination="XeA-9f-BGd" id="EN3-Sp-McO"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="169.41964285714286"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="cloud.sun.fill" catalog="system" width="64" height="44"/>
+    </resources>
+</document>

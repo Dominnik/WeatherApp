@@ -41,6 +41,9 @@ struct WeatherModel: Codable {
 struct Day: Codable {
     
     let main: Main
+    let dt_txt: String
+    let weather: [Sky]
+    
 }
 
 struct Main: Codable {
@@ -48,7 +51,13 @@ struct Main: Codable {
     let temp: Double
 }
 
+struct Sky: Codable {
+    
+    let icon: String
+}
+
 struct City: Codable {
     
     let name: String
+    let country: String
 }

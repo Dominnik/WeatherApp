@@ -8,7 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		615849423BF158F41443FD4B /* Pods_WeatherApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA7332C354D2F96B47E79A36 /* Pods_WeatherApp.framework */; };
+		DB726C60239D06C80013BD78 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB726C5F239D06C80013BD78 /* SearchViewController.swift */; };
+		DB9938BD239DA49A0084A70F /* CurrentDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9938BC239DA49A0084A70F /* CurrentDayViewController.swift */; };
+		DBA67EF42397E58500F2D180 /* DailyWeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA67EF22397E58500F2D180 /* DailyWeatherCell.swift */; };
+		DBA67EF52397E58500F2D180 /* DailyWeatherCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBA67EF32397E58500F2D180 /* DailyWeatherCell.xib */; };
 		DBC384AE23969F2500639AF8 /* APIServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC384AD23969F2500639AF8 /* APIServices.swift */; };
+		DBD03139239D9E8100107855 /* CurrentWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD03138239D9E8100107855 /* CurrentWeatherView.swift */; };
+		DBD0313B239D9EBB00107855 /* CurrentWeatherView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBD0313A239D9EBB00107855 /* CurrentWeatherView.xib */; };
 		DBE00F752396754500653C37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE00F742396754500653C37 /* AppDelegate.swift */; };
 		DBE00F772396754500653C37 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE00F762396754500653C37 /* SceneDelegate.swift */; };
 		DBE00F792396754500653C37 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE00F782396754500653C37 /* ViewController.swift */; };
@@ -21,7 +27,13 @@
 /* Begin PBXFileReference section */
 		311D25724093D40DD961D8C2 /* Pods-WeatherApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherApp.debug.xcconfig"; path = "Target Support Files/Pods-WeatherApp/Pods-WeatherApp.debug.xcconfig"; sourceTree = "<group>"; };
 		BA7332C354D2F96B47E79A36 /* Pods_WeatherApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB726C5F239D06C80013BD78 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		DB9938BC239DA49A0084A70F /* CurrentDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentDayViewController.swift; sourceTree = "<group>"; };
+		DBA67EF22397E58500F2D180 /* DailyWeatherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyWeatherCell.swift; sourceTree = "<group>"; };
+		DBA67EF32397E58500F2D180 /* DailyWeatherCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DailyWeatherCell.xib; sourceTree = "<group>"; };
 		DBC384AD23969F2500639AF8 /* APIServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServices.swift; sourceTree = "<group>"; };
+		DBD03138239D9E8100107855 /* CurrentWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherView.swift; sourceTree = "<group>"; };
+		DBD0313A239D9EBB00107855 /* CurrentWeatherView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrentWeatherView.xib; sourceTree = "<group>"; };
 		DBE00F712396754500653C37 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBE00F742396754500653C37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DBE00F762396754500653C37 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +117,10 @@
 		DBE00F8D2396937300653C37 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DBA67EF22397E58500F2D180 /* DailyWeatherCell.swift */,
+				DBA67EF32397E58500F2D180 /* DailyWeatherCell.xib */,
+				DBD03138239D9E8100107855 /* CurrentWeatherView.swift */,
+				DBD0313A239D9EBB00107855 /* CurrentWeatherView.xib */,
 				DBE00F7A2396754500653C37 /* Main.storyboard */,
 				DBE00F7D2396754500653C37 /* Assets.xcassets */,
 				DBE00F7F2396754500653C37 /* LaunchScreen.storyboard */,
@@ -125,6 +141,8 @@
 			isa = PBXGroup;
 			children = (
 				DBE00F782396754500653C37 /* ViewController.swift */,
+				DB726C5F239D06C80013BD78 /* SearchViewController.swift */,
+				DB9938BC239DA49A0084A70F /* CurrentDayViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -189,6 +207,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBD0313B239D9EBB00107855 /* CurrentWeatherView.xib in Resources */,
+				DBA67EF52397E58500F2D180 /* DailyWeatherCell.xib in Resources */,
 				DBE00F812396754500653C37 /* LaunchScreen.storyboard in Resources */,
 				DBE00F7E2396754500653C37 /* Assets.xcassets in Resources */,
 				DBE00F7C2396754500653C37 /* Main.storyboard in Resources */,
@@ -244,11 +264,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBA67EF42397E58500F2D180 /* DailyWeatherCell.swift in Sources */,
+				DBD03139239D9E8100107855 /* CurrentWeatherView.swift in Sources */,
 				DBE00F792396754500653C37 /* ViewController.swift in Sources */,
+				DB726C60239D06C80013BD78 /* SearchViewController.swift in Sources */,
 				DBE00F752396754500653C37 /* AppDelegate.swift in Sources */,
 				DBE00F892396901600653C37 /* WeatherModel.swift in Sources */,
 				DBE00F772396754500653C37 /* SceneDelegate.swift in Sources */,
 				DBC384AE23969F2500639AF8 /* APIServices.swift in Sources */,
+				DB9938BD239DA49A0084A70F /* CurrentDayViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
