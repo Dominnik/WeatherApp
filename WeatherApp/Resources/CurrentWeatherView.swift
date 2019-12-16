@@ -20,6 +20,9 @@ class CurrentWeatherView: UIView {
     @IBOutlet weak var humidityLabel: UILabel!
     @IBOutlet weak var cloudsLabel: UILabel!
     
+    @IBOutlet weak var iconImageView: UIImageView!
+    
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.commonInit()

@@ -40,8 +40,9 @@ class SearchViewController: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
-        guard let dvc = segue.destination as? ViewController else { return }
-        dvc.cityName = searchTF.text
+        guard let forecastViewController = segue.destination as? ViewController else { return }
+        forecastViewController.cityInfo = searchTF.text
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

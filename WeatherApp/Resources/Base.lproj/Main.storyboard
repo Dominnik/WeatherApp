@@ -75,7 +75,7 @@
                                     <segue destination="Ccj-UJ-8Ia" kind="embed" id="Dkm-iA-YQK"/>
                                 </connections>
                             </containerView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EP9-ev-xCx">
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EP9-ev-xCx">
                                 <rect key="frame" x="0.0" y="119" width="414" height="777"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <connections>
@@ -100,7 +100,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ui9-yI-Tr3"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Загрузка..." id="1Ra-5C-czf"/>
+                    <navigationItem key="navigationItem" title="Загрузка..." id="1Ra-5C-czf">
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="0rw-Nj-XDQ"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="EP9-ev-xCx" id="upv-r9-mRv"/>
                         <outlet property="weatherSwitchControl" destination="cMs-h7-kkJ" id="nqD-bP-4e2"/>
@@ -133,11 +135,12 @@
             <objects>
                 <viewController id="Ccj-UJ-8Ia" customClass="CurrentDayViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5Dg-1t-YVF" customClass="CurrentWeatherView" customModule="WeatherApp" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="777"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="zLs-OH-TJT"/>
                     </view>
+                    <size key="freeformSize" width="414" height="1000"/>
                     <connections>
                         <outlet property="currentWeatherView" destination="5Dg-1t-YVF" id="TRO-w8-Ne1"/>
                     </connections>
