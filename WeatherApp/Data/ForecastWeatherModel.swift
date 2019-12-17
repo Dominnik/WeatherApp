@@ -21,13 +21,21 @@ class ForecastWeatherModel: Object, Codable {
 class Day: Object, Codable {
     
     @objc dynamic var main: Main?
-    @objc dynamic var dt_txt = ""
+    @objc dynamic var dt_txt = Date()
     var weather = List<Sky>()
+    @objc dynamic var wind: Wind?
+}
+
+class Wind: Object, Codable {
+    
+    @objc dynamic var speed: Double = 0.0
 }
 
 class Main: Object, Codable {
     
     @objc dynamic var temp: Double = 0.0
+    @objc dynamic var pressure: Double = 0.0
+    @objc dynamic var humidity: Double = 0.0
 }
 
 class Sky: Object, Codable {

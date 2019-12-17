@@ -18,6 +18,7 @@ public enum ApiMethod: String {
 final public class APIServices {
    
     public static let shared = APIServices()
+    private let formatter = DateFormatterFactory()
     
     private(set) var domain = "https://api.openweathermap.org"
     
@@ -33,7 +34,9 @@ final public class APIServices {
             response.result.withValue { data in
                 do {
                     
-                    let result = try JSONDecoder.init().decode(T.self, from: data)
+                    let decoder = JSONDecoder()
+                    decoder.dateDecodingStrategy = .formatted(self.formatter.dateFormatter)
+                    let result = try decoder.decode(T.self, from: data)
 //                    print(response)
                     handler(result, nil)
                 } catch (let error) {

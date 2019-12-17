@@ -14,14 +14,14 @@ class CurrentDayViewController: UIViewController {
     
     @IBOutlet weak var currentWeatherView: CurrentWeatherView!
     
-
+    
     var cityInfo: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         currentWeatherRequest()
-
+        
     }
     
     func currentWeatherRequest() {
@@ -30,7 +30,7 @@ class CurrentDayViewController: UIViewController {
             if let error = error {
                 print("\(error)")
             } else if let currentResult = result {
-//                print("\(currentResult)")
+                //                print("\(currentResult)")
                 self?.currentWeatherUpdate(from: currentResult)
             }
         }
@@ -63,28 +63,17 @@ class CurrentDayViewController: UIViewController {
         DispatchQueue.global().async {
             
             if let icon = icons.first?.icon {
-               
+                
                 guard let iconUrl = URL(string: "http://openweathermap.org/img/wn/\(icon)@2x.png") else { return }
                 guard let imageData = try? Data(contentsOf: iconUrl) else { return }
-            
-            DispatchQueue.main.async {
                 
-                self.currentWeatherView.iconImageView.image = UIImage(data: imageData)
+                DispatchQueue.main.async {
+                    
+                    self.currentWeatherView.iconImageView.image = UIImage(data: imageData)
                 }
             }
         }
-        }
-
-
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    }
     
 }
 
