@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ForecastViewController.swift
 //  WeatherApp
 //
 //  Created by Andrey Kovalenko on 03.12.2019.
@@ -8,11 +8,10 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ForecastViewController: UIViewController {
     
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var weatherSwitchControl: UISegmentedControl!
     
     private let factory = DateFormatterFactory()
     
@@ -25,7 +24,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        weatherSwitchControl.selectedSegmentIndex = 0
+        
         tableView.register(UINib(nibName: "DailyWeatherCell", bundle: nil), forCellReuseIdentifier: "DailyWeatherCell")
         tableView.register(UINib(nibName: "DailyWeatherHeader", bundle: nil), forHeaderFooterViewReuseIdentifier: "DailyWeatherHeader")
         
@@ -40,19 +39,19 @@ class ViewController: UIViewController {
                 if let error = error {
                     print("\(error)")
                 } else if let forecastResult = result {
+                    self?.saveObject(from: forecastResult)
                     self?.forecastWeatherUpdate(from: forecastResult)
                 }
-                self?.saveObject(from: ForecastWeatherModel())
             }
     }
 
     
     private func forecastWeatherUpdate(from result: ForecastWeatherModel) {
-        navigationItem.title = result.city!.name + ", " + result.city!.country
+        navigationItem.title = "Прогноз на 5 дней"
         
         sections.removeAll()
         result.list.forEach { day in
-            let dayAsString = self.factory.weekdayDateFormatter.string(from: day.dt_txt)
+            let dayAsString = self.factory.weekdayDateFormatter.string(from: day.dt_txt).capitalized
             var section = sections.first { section in section.date == dayAsString }
             if section == nil {
                 section = ForecastWeatherSectionModel.init(date: dayAsString)
@@ -88,6 +87,10 @@ class ViewController: UIViewController {
         
         cell.weatherValueLabel?.text = String(row.temp) + "°C"
         cell.dateValueLabel?.text = row.time
+        cell.humidityValueLabel?.text = String(row.humidity) + "%"
+        cell.pressureValueLabel?.text = String(row.pressure) + "мм рт.ст."
+        cell.windSpeeedValueLabel?.text = String(row.speed) + "м/с"
+        
         
         DispatchQueue.global().async {
             
@@ -120,7 +123,7 @@ class ViewController: UIViewController {
     
 }
 
-extension ViewController: UITableViewDataSource {
+extension ForecastViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return sections[section].cells.count
@@ -140,13 +143,9 @@ extension ViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count
     }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50.0
-    }
 }
 
-extension ViewController: UITableViewDelegate {
+extension ForecastViewController: UITableViewDelegate {
     
 }
 

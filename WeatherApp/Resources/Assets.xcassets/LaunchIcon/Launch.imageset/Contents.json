@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "svg_bad-weather-psd.pdf",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "02d@2x.png",
       "scale" : "2x"
     },
     {

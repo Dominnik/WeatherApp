@@ -13,6 +13,11 @@ class DailyWeatherCell: UITableViewCell {
     @IBOutlet weak var weatherValueLabel: UILabel!
     @IBOutlet weak var dateValueLabel: UILabel!
     @IBOutlet weak var weatherIconImage: UIImageView!
+    @IBOutlet weak var humidityValueLabel: UILabel!
+    @IBOutlet weak var pressureValueLabel: UILabel!
+    @IBOutlet weak var windSpeeedValueLabel: UILabel!
+    
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

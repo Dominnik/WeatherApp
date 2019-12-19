@@ -12,7 +12,7 @@ class DateFormatterFactory {
 
     lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.locale = Locale.current
+        formatter.locale = Locale(identifier: "ru_RU")
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         formatter.timeZone = TimeZone.current
         return formatter
@@ -20,7 +20,7 @@ class DateFormatterFactory {
     
     lazy var weekdayDateFormatter:DateFormatter = {
         let formatter = DateFormatter()
-        formatter.locale = Locale.current
+        formatter.locale = Locale(identifier: "ru_RU")
         formatter.dateFormat = "EEEE, dd MMMM, yyyy"
         formatter.timeZone = TimeZone.current
         return formatter
@@ -28,7 +28,8 @@ class DateFormatterFactory {
     
     lazy var timeFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.locale = Locale.current
+        formatter.locale = Locale(identifier: "ru_RU")
+        
         formatter.dateFormat = "HH:mm"
         formatter.timeZone = TimeZone.current
         return formatter

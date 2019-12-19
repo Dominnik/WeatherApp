@@ -7,105 +7,39 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Search-->
-        <scene sceneID="xSL-Hc-Ez4">
-            <objects>
-                <viewController id="KBc-n1-L5K" customClass="SearchViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="2MP-dS-toz">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter the city..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sqM-R7-HDa">
-                                <rect key="frame" x="20" y="115" width="308" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x0v-B7-aCD">
-                                <rect key="frame" x="336" y="117" width="58" height="30"/>
-                                <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Weather">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="searchAction:" destination="KBc-n1-L5K" eventType="touchUpInside" id="PWv-ry-rUt"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="Cg4-3z-acf" firstAttribute="trailing" secondItem="x0v-B7-aCD" secondAttribute="trailing" constant="20" id="1KZ-dE-knA"/>
-                            <constraint firstItem="sqM-R7-HDa" firstAttribute="leading" secondItem="Cg4-3z-acf" secondAttribute="leading" constant="20" id="9uz-ca-X80"/>
-                            <constraint firstItem="x0v-B7-aCD" firstAttribute="centerY" secondItem="sqM-R7-HDa" secondAttribute="centerY" id="dbe-nq-5ZN"/>
-                            <constraint firstItem="sqM-R7-HDa" firstAttribute="top" secondItem="Cg4-3z-acf" secondAttribute="top" constant="27" id="eW0-iW-rm1"/>
-                            <constraint firstItem="x0v-B7-aCD" firstAttribute="leading" secondItem="sqM-R7-HDa" secondAttribute="trailing" constant="8" id="uoj-Fc-CXP"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="Cg4-3z-acf"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Search" id="UoH-lO-kvx"/>
-                    <connections>
-                        <outlet property="searchTF" destination="sqM-R7-HDa" id="4KE-Cz-H2i"/>
-                        <segue destination="PQJ-Hd-1Rb" kind="show" identifier="cityNameSegue" id="Rmk-n6-ZDe"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jXl-fp-MFx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3038" y="13"/>
-        </scene>
         <!--Загрузка...-->
         <scene sceneID="ccc-Um-r8o">
             <objects>
-                <viewController id="PQJ-Hd-1Rb" customClass="ViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="PQJ-Hd-1Rb" customClass="CurrentDayViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5gS-E9-zHj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="cMs-h7-kkJ">
-                                <rect key="frame" x="0.0" y="88" width="414" height="32"/>
-                                <segments>
-                                    <segment title="Current"/>
-                                    <segment title="5 Days"/>
-                                </segments>
-                                <connections>
-                                    <action selector="switchWeatherForecastAction:" destination="PQJ-Hd-1Rb" eventType="valueChanged" id="SXh-ks-4PT"/>
-                                </connections>
-                            </segmentedControl>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J07-8l-8B6">
-                                <rect key="frame" x="0.0" y="119" width="414" height="777"/>
-                                <connections>
-                                    <segue destination="Ccj-UJ-8Ia" kind="embed" id="Dkm-iA-YQK"/>
-                                </connections>
-                            </containerView>
-                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EP9-ev-xCx">
-                                <rect key="frame" x="0.0" y="119" width="414" height="777"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m6V-7R-5tw" customClass="CurrentWeatherView" customModule="WeatherApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="PQJ-Hd-1Rb" id="URT-JC-JjT"/>
-                                    <outlet property="delegate" destination="PQJ-Hd-1Rb" id="iOU-4M-3BP"/>
-                                </connections>
-                            </tableView>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="cMs-h7-kkJ" firstAttribute="trailing" secondItem="Ui9-yI-Tr3" secondAttribute="trailing" id="5US-Ur-vaK"/>
-                            <constraint firstItem="Ui9-yI-Tr3" firstAttribute="bottom" secondItem="J07-8l-8B6" secondAttribute="bottom" constant="-34" id="6H1-tG-RQr"/>
-                            <constraint firstItem="Ui9-yI-Tr3" firstAttribute="bottom" secondItem="EP9-ev-xCx" secondAttribute="bottom" constant="-34" id="VIu-5K-orm"/>
-                            <constraint firstItem="Ui9-yI-Tr3" firstAttribute="trailing" secondItem="J07-8l-8B6" secondAttribute="trailing" id="Xz8-3H-j62"/>
-                            <constraint firstItem="cMs-h7-kkJ" firstAttribute="leading" secondItem="Ui9-yI-Tr3" secondAttribute="leading" id="bpp-ue-fFC"/>
-                            <constraint firstItem="cMs-h7-kkJ" firstAttribute="top" secondItem="Ui9-yI-Tr3" secondAttribute="top" id="kcX-Be-toZ"/>
-                            <constraint firstItem="EP9-ev-xCx" firstAttribute="top" secondItem="cMs-h7-kkJ" secondAttribute="bottom" id="lF0-6o-YSt"/>
-                            <constraint firstItem="EP9-ev-xCx" firstAttribute="trailing" secondItem="Ui9-yI-Tr3" secondAttribute="trailing" id="lzn-gE-uN1"/>
-                            <constraint firstItem="J07-8l-8B6" firstAttribute="leading" secondItem="Ui9-yI-Tr3" secondAttribute="leading" id="svk-Hp-wWa"/>
-                            <constraint firstItem="J07-8l-8B6" firstAttribute="top" secondItem="cMs-h7-kkJ" secondAttribute="bottom" id="tFA-la-BhS"/>
-                            <constraint firstItem="EP9-ev-xCx" firstAttribute="leading" secondItem="Ui9-yI-Tr3" secondAttribute="leading" id="tND-t5-32U"/>
+                            <constraint firstItem="m6V-7R-5tw" firstAttribute="leading" secondItem="Ui9-yI-Tr3" secondAttribute="leading" id="Nk6-Vy-tJ6"/>
+                            <constraint firstItem="m6V-7R-5tw" firstAttribute="top" secondItem="Ui9-yI-Tr3" secondAttribute="top" id="WPZ-dQ-xoE"/>
+                            <constraint firstAttribute="bottom" secondItem="m6V-7R-5tw" secondAttribute="bottom" id="d6g-Es-YUl"/>
+                            <constraint firstItem="m6V-7R-5tw" firstAttribute="trailing" secondItem="Ui9-yI-Tr3" secondAttribute="trailing" id="kac-l2-0NH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ui9-yI-Tr3"/>
                     </view>
                     <navigationItem key="navigationItem" title="Загрузка..." id="1Ra-5C-czf">
-                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="0rw-Nj-XDQ"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="0rw-Nj-XDQ">
+                            <connections>
+                                <action selector="newCitySearchBarButton:" destination="PQJ-Hd-1Rb" id="65C-LJ-15R"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <size key="freeformSize" width="414" height="896"/>
                     <connections>
-                        <outlet property="tableView" destination="EP9-ev-xCx" id="upv-r9-mRv"/>
-                        <outlet property="weatherSwitchControl" destination="cMs-h7-kkJ" id="nqD-bP-4e2"/>
+                        <outlet property="currentWeatherView" destination="m6V-7R-5tw" id="f8V-eh-0XD"/>
+                        <segue destination="Ccj-UJ-8Ia" kind="show" identifier="ShowForecastWeather" id="Am0-S1-gFg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qYq-IH-Hfo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -123,31 +57,49 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="KBc-n1-L5K" kind="relationship" relationship="rootViewController" id="4Vn-Tn-fXG"/>
+                        <segue destination="PQJ-Hd-1Rb" kind="relationship" relationship="rootViewController" id="Cya-fp-GVK"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Inv-3c-eoh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2259" y="13"/>
+            <point key="canvasLocation" x="2977" y="13"/>
         </scene>
-        <!--Current Day View Controller-->
+        <!--Forecast View Controller-->
         <scene sceneID="0pN-UI-iT8">
             <objects>
-                <viewController id="Ccj-UJ-8Ia" customClass="CurrentDayViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="5Dg-1t-YVF" customClass="CurrentWeatherView" customModule="WeatherApp" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
+                <viewController id="Ccj-UJ-8Ia" customClass="ForecastViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5Dg-1t-YVF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EP9-ev-xCx">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Ccj-UJ-8Ia" id="RKa-YV-kxl"/>
+                                    <outlet property="delegate" destination="Ccj-UJ-8Ia" id="evc-oj-cOE"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="EP9-ev-xCx" firstAttribute="top" secondItem="5Dg-1t-YVF" secondAttribute="top" id="4bl-HN-Xpf"/>
+                            <constraint firstAttribute="bottom" secondItem="EP9-ev-xCx" secondAttribute="bottom" id="G4D-gN-Mav"/>
+                            <constraint firstItem="EP9-ev-xCx" firstAttribute="leading" secondItem="zLs-OH-TJT" secondAttribute="leading" id="am0-iH-Fxl"/>
+                            <constraint firstItem="EP9-ev-xCx" firstAttribute="trailing" secondItem="zLs-OH-TJT" secondAttribute="trailing" id="bPT-xL-Q5f"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="zLs-OH-TJT"/>
                     </view>
-                    <size key="freeformSize" width="414" height="1000"/>
+                    <navigationItem key="navigationItem" id="jO0-NK-tMk">
+                        <barButtonItem key="backBarButtonItem" title="Сейчас" id="cRZ-cR-ylQ"/>
+                    </navigationItem>
                     <connections>
-                        <outlet property="currentWeatherView" destination="5Dg-1t-YVF" id="TRO-w8-Ne1"/>
+                        <outlet property="tableView" destination="EP9-ev-xCx" id="FXX-sa-C4c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VYF-9I-FbE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4789.8550724637689" y="52.566964285714285"/>
+            <point key="canvasLocation" x="4829" y="13"/>
         </scene>
     </scenes>
 </document>

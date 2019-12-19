@@ -36,7 +36,7 @@ class CurrentMain: Object, Codable {
 
 class CurrentWind: Object, Codable {
     
-    @objc dynamic var speed = 0
+    @objc dynamic var speed = 0.0
 }
 
 class CurrentClouds: Object, Codable {

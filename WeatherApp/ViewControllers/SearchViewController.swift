@@ -12,37 +12,45 @@ class SearchViewController: UIViewController {
 
     @IBOutlet weak var searchTF: UITextField!
     
+    private let locationManager = LocationManager()
+    var cityInfo: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        guard let exposedLocation = self.locationManager.exposedLocation else {
+            print("*** Error in \(#function): exposedLocation is nil")
+            return
+        }
+        
+        self.locationManager.getPlace(for: exposedLocation) { (placemark) in
+            
+            guard let placemark = placemark else { return }
+            
+            if let city = placemark.locality {
+                self.cityInfo = city
+                print("&!&!&!&!&!&!&!&!&!&!&!&!&!&!&!&!&!&!&!&!&!&!&!&!&!&!&!&!&!&!&!&!&!&!&!&!&!&!&!&!&!&!&!&!&!&!&!&!&!&!&!")
+                print(city)
+            }
+        }
         
     }
     
     @IBAction func searchAction(_ sender: UIButton) {
         guard searchTF.text?.isEmpty == false else { return }
         
-        //TODO: доделать do-catch
-        do {
-            performSegue(withIdentifier: "cityNameSegue", sender: nil)
-        } catch {
-        
-            let alert = UIAlertController(title: "Wrong format", message: "Please enter city name", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-            
-            alert.addAction(okAction)
-            present(alert, animated: true, completion: nil)
-        }
+        performSegue(withIdentifier: "cityNameSegue", sender: nil)
+
     }
-    
 
     // MARK: - Navigation
 
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
-        guard let forecastViewController = segue.destination as? ViewController else { return }
-        forecastViewController.cityInfo = searchTF.text
-        
+        guard let currentDayViewController = segue.destination as? CurrentDayViewController else { return }
+        currentDayViewController.cityInfo = cityInfo
+        currentDayViewController.navigationItem.title = cityInfo
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
