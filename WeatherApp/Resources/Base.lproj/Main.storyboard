@@ -30,11 +30,19 @@
                         <viewLayoutGuide key="safeArea" id="Ui9-yI-Tr3"/>
                     </view>
                     <navigationItem key="navigationItem" title="Загрузка..." id="1Ra-5C-czf">
-                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="0rw-Nj-XDQ">
-                            <connections>
-                                <action selector="newCitySearchBarButton:" destination="PQJ-Hd-1Rb" id="65C-LJ-15R"/>
-                            </connections>
-                        </barButtonItem>
+                        <leftBarButtonItems>
+                            <barButtonItem systemItem="search" id="0rw-Nj-XDQ">
+                                <connections>
+                                    <action selector="newCitySearchBarButton:" destination="PQJ-Hd-1Rb" id="65C-LJ-15R"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Item" image="location.fill" catalog="system" id="jhZ-Nb-EUo">
+                                <connections>
+                                    <action selector="goToCurrentLocationAction:" destination="PQJ-Hd-1Rb" id="vli-Y9-dG7"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="line.horizontal.3" catalog="system" id="nla-Q8-WBD"/>
                     </navigationItem>
                     <size key="freeformSize" width="414" height="896"/>
                     <connections>
@@ -102,4 +110,8 @@
             <point key="canvasLocation" x="4829" y="13"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="line.horizontal.3" catalog="system" width="64" height="32"/>
+        <image name="location.fill" catalog="system" width="64" height="56"/>
+    </resources>
 </document>
