@@ -9,13 +9,16 @@
 /* Begin PBXBuildFile section */
 		615849423BF158F41443FD4B /* Pods_WeatherApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA7332C354D2F96B47E79A36 /* Pods_WeatherApp.framework */; };
 		DB07F16623A9110D00AF89E6 /* ForecastWeatherSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB07F16523A9110D00AF89E6 /* ForecastWeatherSectionModel.swift */; };
+		DB1B7BAE23AE795F00AA9A28 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1B7BAD23AE795F00AA9A28 /* UIViewExtension.swift */; };
 		DB3D621423A9096C00236F5D /* DateFormatterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3D621323A9096C00236F5D /* DateFormatterFactory.swift */; };
-		DB3D621823A90B2100236F5D /* DailyWeatherHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB3D621723A90B2100236F5D /* DailyWeatherHeader.xib */; };
 		DB3D621A23A90C5800236F5D /* DailyWeatherHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3D621923A90C5800236F5D /* DailyWeatherHeader.swift */; };
 		DB4E932923A14092009CF3AC /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4E932823A14092009CF3AC /* StorageManager.swift */; };
 		DB9938BD239DA49A0084A70F /* CurrentDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9938BC239DA49A0084A70F /* CurrentDayViewController.swift */; };
 		DBA67EF42397E58500F2D180 /* DailyWeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA67EF22397E58500F2D180 /* DailyWeatherCell.swift */; };
 		DBA67EF52397E58500F2D180 /* DailyWeatherCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBA67EF32397E58500F2D180 /* DailyWeatherCell.xib */; };
+		DBBAEB1B23AD0469000FA968 /* CurrentWeatherRealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBAEB1A23AD0469000FA968 /* CurrentWeatherRealmModel.swift */; };
+		DBBAEB1D23AD146D000FA968 /* CacheViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBAEB1C23AD146D000FA968 /* CacheViewController.swift */; };
+		DBBAEB2123AD2D7E000FA968 /* DailyWeatherHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBBAEB2023AD2D7E000FA968 /* DailyWeatherHeader.xib */; };
 		DBC384AE23969F2500639AF8 /* APIServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC384AD23969F2500639AF8 /* APIServices.swift */; };
 		DBD03139239D9E8100107855 /* CurrentWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD03138239D9E8100107855 /* CurrentWeatherView.swift */; };
 		DBD0313B239D9EBB00107855 /* CurrentWeatherView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBD0313A239D9EBB00107855 /* CurrentWeatherView.xib */; };
@@ -33,13 +36,16 @@
 		311D25724093D40DD961D8C2 /* Pods-WeatherApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherApp.debug.xcconfig"; path = "Target Support Files/Pods-WeatherApp/Pods-WeatherApp.debug.xcconfig"; sourceTree = "<group>"; };
 		BA7332C354D2F96B47E79A36 /* Pods_WeatherApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB07F16523A9110D00AF89E6 /* ForecastWeatherSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastWeatherSectionModel.swift; sourceTree = "<group>"; };
+		DB1B7BAD23AE795F00AA9A28 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		DB3D621323A9096C00236F5D /* DateFormatterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterFactory.swift; sourceTree = "<group>"; };
-		DB3D621723A90B2100236F5D /* DailyWeatherHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DailyWeatherHeader.xib; sourceTree = "<group>"; };
 		DB3D621923A90C5800236F5D /* DailyWeatherHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyWeatherHeader.swift; sourceTree = "<group>"; };
 		DB4E932823A14092009CF3AC /* StorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StorageManager.swift; path = "../../../../../Desktop/Новая папка/WeatherApp/Data/StorageManager.swift"; sourceTree = "<group>"; };
 		DB9938BC239DA49A0084A70F /* CurrentDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentDayViewController.swift; sourceTree = "<group>"; };
 		DBA67EF22397E58500F2D180 /* DailyWeatherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyWeatherCell.swift; sourceTree = "<group>"; };
 		DBA67EF32397E58500F2D180 /* DailyWeatherCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DailyWeatherCell.xib; sourceTree = "<group>"; };
+		DBBAEB1A23AD0469000FA968 /* CurrentWeatherRealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherRealmModel.swift; sourceTree = "<group>"; };
+		DBBAEB1C23AD146D000FA968 /* CacheViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheViewController.swift; sourceTree = "<group>"; };
+		DBBAEB2023AD2D7E000FA968 /* DailyWeatherHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DailyWeatherHeader.xib; sourceTree = "<group>"; };
 		DBC384AD23969F2500639AF8 /* APIServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServices.swift; sourceTree = "<group>"; };
 		DBD03138239D9E8100107855 /* CurrentWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherView.swift; sourceTree = "<group>"; };
 		DBD0313A239D9EBB00107855 /* CurrentWeatherView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrentWeatherView.xib; sourceTree = "<group>"; };
@@ -89,11 +95,12 @@
 			isa = PBXGroup;
 			children = (
 				DB3D621923A90C5800236F5D /* DailyWeatherHeader.swift */,
-				DB3D621723A90B2100236F5D /* DailyWeatherHeader.xib */,
+				DBBAEB2023AD2D7E000FA968 /* DailyWeatherHeader.xib */,
 				DBA67EF22397E58500F2D180 /* DailyWeatherCell.swift */,
 				DBA67EF32397E58500F2D180 /* DailyWeatherCell.xib */,
 				DBD03138239D9E8100107855 /* CurrentWeatherView.swift */,
 				DBD0313A239D9EBB00107855 /* CurrentWeatherView.xib */,
+				DB1B7BAD23AE795F00AA9A28 /* UIViewExtension.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -103,6 +110,7 @@
 			children = (
 				DBE00F882396901600653C37 /* ForecastWeatherModel.swift */,
 				DBD47D8F23A78568008A49D0 /* CurrentWeatherModel.swift */,
+				DBBAEB1A23AD0469000FA968 /* CurrentWeatherRealmModel.swift */,
 				DB07F16523A9110D00AF89E6 /* ForecastWeatherSectionModel.swift */,
 			);
 			path = Models;
@@ -174,6 +182,7 @@
 			children = (
 				DBE00F782396754500653C37 /* ForecastViewController.swift */,
 				DB9938BC239DA49A0084A70F /* CurrentDayViewController.swift */,
+				DBBAEB1C23AD146D000FA968 /* CacheViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -241,7 +250,7 @@
 				DBD0313B239D9EBB00107855 /* CurrentWeatherView.xib in Resources */,
 				DBA67EF52397E58500F2D180 /* DailyWeatherCell.xib in Resources */,
 				DBE00F812396754500653C37 /* LaunchScreen.storyboard in Resources */,
-				DB3D621823A90B2100236F5D /* DailyWeatherHeader.xib in Resources */,
+				DBBAEB2123AD2D7E000FA968 /* DailyWeatherHeader.xib in Resources */,
 				DBE00F7E2396754500653C37 /* Assets.xcassets in Resources */,
 				DBE00F7C2396754500653C37 /* Main.storyboard in Resources */,
 			);
@@ -302,12 +311,15 @@
 				DBE00F792396754500653C37 /* ForecastViewController.swift in Sources */,
 				DB3D621A23A90C5800236F5D /* DailyWeatherHeader.swift in Sources */,
 				DB07F16623A9110D00AF89E6 /* ForecastWeatherSectionModel.swift in Sources */,
+				DB1B7BAE23AE795F00AA9A28 /* UIViewExtension.swift in Sources */,
 				DBE00F752396754500653C37 /* AppDelegate.swift in Sources */,
 				DBE00F892396901600653C37 /* ForecastWeatherModel.swift in Sources */,
 				DBE00F772396754500653C37 /* SceneDelegate.swift in Sources */,
 				DB4E932923A14092009CF3AC /* StorageManager.swift in Sources */,
+				DBBAEB1B23AD0469000FA968 /* CurrentWeatherRealmModel.swift in Sources */,
 				DBC384AE23969F2500639AF8 /* APIServices.swift in Sources */,
 				DB9938BD239DA49A0084A70F /* CurrentDayViewController.swift in Sources */,
+				DBBAEB1D23AD146D000FA968 /* CacheViewController.swift in Sources */,
 				DB3D621423A9096C00236F5D /* DateFormatterFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,6 +9,7 @@
 
 import UIKit
 import RealmSwift
+import ObjectMapper
 
 
 class ForecastWeatherModel: Object, Codable {
@@ -24,12 +25,14 @@ class Day: Object, Codable {
     @objc dynamic var dt_txt = Date()
     var weather = List<Sky>()
     @objc dynamic var wind: Wind?
+    
 }
 
 class Wind: Object, Codable {
     
     @objc dynamic var speed: Double = 0.0
 }
+
 
 class Main: Object, Codable {
     
@@ -51,3 +54,4 @@ class City: Object, Codable {
     
     
 }
+

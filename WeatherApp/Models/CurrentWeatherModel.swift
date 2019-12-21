@@ -8,6 +8,8 @@
 
 import UIKit
 import RealmSwift
+import ObjectMapper
+
 
 class CurrentWeatherModel: Object, Codable {
     
@@ -18,7 +20,9 @@ class CurrentWeatherModel: Object, Codable {
     @objc dynamic var wind: CurrentWind?
     @objc dynamic var clouds: CurrentClouds?
     @objc dynamic var sys: CurrentSystem?
+
 }
+
 class CurrentSky: Object, Codable {
     
      @objc dynamic var icon = ""

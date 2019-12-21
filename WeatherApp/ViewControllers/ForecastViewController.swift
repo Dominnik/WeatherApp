@@ -39,7 +39,7 @@ class ForecastViewController: UIViewController {
                 if let error = error {
                     print("\(error)")
                 } else if let forecastResult = result {
-                    self?.saveObject(from: forecastResult)
+//                    self?.saveObject(from: forecastResult)
                     self?.forecastWeatherUpdate(from: forecastResult)
                 }
             }
@@ -72,15 +72,6 @@ class ForecastViewController: UIViewController {
         tableView.reloadData()
     }
     
-    
-    func saveObject(from result: ForecastWeatherModel) {
-        
-        let newCity = ForecastWeatherModel()
-        newCity.list = result.list
-        newCity.city = result.city
-        StorageManager.saveObject(newCity)
-        
-    }
     
     private func configureCell(cell: DailyWeatherCell, for indexPath: IndexPath) {
         let row = sections[indexPath.section].cells[indexPath.row]

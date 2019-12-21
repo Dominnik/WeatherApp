@@ -37,7 +37,6 @@ final public class APIServices {
                     let decoder = JSONDecoder()
                     decoder.dateDecodingStrategy = .formatted(self.formatter.dateFormatter)
                     let result = try decoder.decode(T.self, from: data)
-//                    print(response)
                     handler(result, nil)
                 } catch (let error) {
                     handler(nil, error)

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -9,40 +9,41 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="DailyWeatherHeader" customModule="WeatherApp" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
-            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+        <view contentMode="scaleToFill" id="69j-d0-mdH" customClass="DailyWeatherHeader" customModule="WeatherApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KUV-KQ-U4R">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h1e-qu-XA8">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="День недели, дата" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TnA-YA-lbB">
-                            <rect key="frame" x="22" y="10" width="134.5" height="20.5"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="День недели, Дата" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cPB-4N-ICr">
+                            <rect key="frame" x="41" y="0.0" width="136" height="50"/>
                             <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
                             <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" red="0.75313160403206647" green="0.8739529480555922" blue="0.96699744462966919" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="40" id="Mst-21-8MX"/>
-                        <constraint firstItem="TnA-YA-lbB" firstAttribute="centerY" secondItem="KUV-KQ-U4R" secondAttribute="centerY" id="dGK-vz-7eV"/>
-                        <constraint firstItem="TnA-YA-lbB" firstAttribute="leading" secondItem="KUV-KQ-U4R" secondAttribute="leading" constant="22" id="zHX-hg-Kpd"/>
+                        <constraint firstItem="cPB-4N-ICr" firstAttribute="top" secondItem="h1e-qu-XA8" secondAttribute="top" id="OGo-bo-aIs"/>
+                        <constraint firstAttribute="bottom" secondItem="cPB-4N-ICr" secondAttribute="bottom" id="lTg-AZ-4Bn"/>
+                        <constraint firstItem="cPB-4N-ICr" firstAttribute="leading" secondItem="h1e-qu-XA8" secondAttribute="leading" constant="41" id="nuz-ah-gvC"/>
                     </constraints>
                 </view>
             </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="KUV-KQ-U4R" secondAttribute="trailing" id="EEo-iO-QTU"/>
-                <constraint firstItem="KUV-KQ-U4R" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="OyL-eX-V2a"/>
-                <constraint firstItem="KUV-KQ-U4R" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="R7q-0E-gNR"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="KUV-KQ-U4R" secondAttribute="bottom" id="ffZ-ZW-4gx"/>
+                <constraint firstItem="h1e-qu-XA8" firstAttribute="top" secondItem="km2-r2-ZKO" secondAttribute="top" id="5DL-hf-mLw"/>
+                <constraint firstItem="h1e-qu-XA8" firstAttribute="leading" secondItem="km2-r2-ZKO" secondAttribute="leading" id="8Ov-Gm-ten"/>
+                <constraint firstItem="h1e-qu-XA8" firstAttribute="bottom" secondItem="km2-r2-ZKO" secondAttribute="bottom" id="RPl-aI-WCq"/>
+                <constraint firstItem="h1e-qu-XA8" firstAttribute="trailing" secondItem="km2-r2-ZKO" secondAttribute="trailing" id="muc-cZ-iS9"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <viewLayoutGuide key="safeArea" id="km2-r2-ZKO"/>
             <connections>
-                <outlet property="dateLabel" destination="TnA-YA-lbB" id="jhZ-4Y-OcD"/>
+                <outlet property="dateLabel" destination="cPB-4N-ICr" id="IYe-NA-Azd"/>
             </connections>
-            <point key="canvasLocation" x="-7.2463768115942031" y="174.77678571428569"/>
+            <point key="canvasLocation" x="231.8840579710145" y="342.39130434782612"/>
         </view>
     </objects>
 </document>
