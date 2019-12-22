@@ -40,7 +40,6 @@ class CurrentDayViewController: UIViewController, CurrentWeatherViewDelegate, CL
         reachability.whenReachable = { reachability in
             self.connection = true
             self.errorConnectionView.isHidden = true
-            self.cacheButton.isEnabled = false
             self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
             self.locationManager.delegate = self
             self.locationManager.requestWhenInUseAuthorization()
@@ -50,7 +49,6 @@ class CurrentDayViewController: UIViewController, CurrentWeatherViewDelegate, CL
         
         reachability.whenUnreachable = { _ in
             self.connection = false
-            self.cacheButton.isEnabled = true
             self.currentWeatherView.delegate = self
             self.errorConnectionView.isHidden = false
             self.errorConnectionView.flash()
@@ -153,6 +151,8 @@ class CurrentDayViewController: UIViewController, CurrentWeatherViewDelegate, CL
             }
         }
     }
+    
+    //MARK: - Work with database
     
     func saveObject(from result: CurrentWeatherModel) {
         
