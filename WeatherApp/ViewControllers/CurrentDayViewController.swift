@@ -118,6 +118,7 @@ class CurrentDayViewController: UIViewController, CurrentWeatherViewDelegate, CL
     
     @IBAction func goToCurrentLocationAction(_ sender: UIBarButtonItem) {
         
+        testingConnection(reachability)
         if currentCity != nil {
             self.locationManager.delegate = self
             self.locationManager.startUpdatingLocation()
@@ -172,7 +173,9 @@ class CurrentDayViewController: UIViewController, CurrentWeatherViewDelegate, CL
     
     private func setupWeatherFromCache() {
         
+        testingConnection(reachability)
         if currentWeatherRealmModel != nil {
+            if connection == false {
 
             navigationItem.title = currentWeatherRealmModel!.name + ", " + currentWeatherRealmModel!.country
             currentWeatherView.tempLabel?.text = String(format: "%.0f", (currentWeatherRealmModel!.temp) - 273.15) + "°C"
@@ -181,6 +184,10 @@ class CurrentDayViewController: UIViewController, CurrentWeatherViewDelegate, CL
             currentWeatherView.windSpeedLabel?.text = String(currentWeatherRealmModel!.speed) + " м/с"
             currentWeatherView.cloudsLabel?.text = String(currentWeatherRealmModel!.cloudy) + " %"
             self.cityInfo = currentWeatherRealmModel!.name
+            
+            } else {
+                currentWeatherRequest(with: currentWeatherRealmModel!.name)
+            }
         }
     }
     

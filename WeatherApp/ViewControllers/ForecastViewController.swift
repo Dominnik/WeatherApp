@@ -93,10 +93,7 @@ class ForecastViewController: UIViewController {
             newForecastDay.parent = newForecastWeatherObject
             
             newForecastWeatherObject.list.append(newForecastDay)
-            print(newForecastDay)
-            
         }
-        print(Day())
         StorageManager.saveForecastObject(newForecastWeatherObject)
         
     }
