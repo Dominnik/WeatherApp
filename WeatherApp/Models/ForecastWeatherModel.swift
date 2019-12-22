@@ -12,46 +12,43 @@ import RealmSwift
 import ObjectMapper
 
 
-class ForecastWeatherModel: Object, Codable {
+struct ForecastWeatherModel: Codable {
     
-    var list = List<Day>()
-    @objc dynamic var city: City?
-    
+    var list = [ForecastDay]()
+    var city: ForecastCity?
 }
 
-class Day: Object, Codable {
+struct ForecastCity: Codable {
     
-    @objc dynamic var main: Main?
-    @objc dynamic var dt_txt = Date()
-    var weather = List<Sky>()
-    @objc dynamic var wind: Wind?
-    
+    var id = 0
+    var name = ""
+    var country = ""
 }
 
-class Wind: Object, Codable {
+struct ForecastDay: Codable {
     
-    @objc dynamic var speed: Double = 0.0
+    var main: ForecastMain?
+    var dt_txt = Date()
+    var weather = [ForecastSky]()
+    var wind: ForecastWind?
+}
+
+struct ForecastWind: Codable {
+    
+    var speed: Double = 0.0
+}
+
+struct ForecastMain: Codable {
+    
+    var temp: Double = 0.0
+    var pressure: Double = 0.0
+    var humidity: Double = 0.0
+}
+
+struct ForecastSky: Codable {
+    
+    var icon = ""
 }
 
 
-class Main: Object, Codable {
-    
-    @objc dynamic var temp: Double = 0.0
-    @objc dynamic var pressure: Double = 0.0
-    @objc dynamic var humidity: Double = 0.0
-}
-
-class Sky: Object, Codable {
-    
-    @objc dynamic var icon = ""
-}
-
-class City: Object, Codable {
-    
-    @objc dynamic var id = 0
-    @objc dynamic var name = ""
-    @objc dynamic var country = ""
-    
-    
-}
 

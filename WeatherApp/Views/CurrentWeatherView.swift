@@ -17,7 +17,7 @@ protocol CurrentWeatherViewDelegate: class {
 class CurrentWeatherView: UIView {
 
     @IBOutlet weak var mainView: UIView!
-    @IBOutlet weak var helloLabel: UILabel!
+    @IBOutlet weak var tempLabel: UILabel!
     @IBOutlet weak var pressureLabel: UILabel!
     @IBOutlet weak var windSpeedLabel: UILabel!
     @IBOutlet weak var humidityLabel: UILabel!

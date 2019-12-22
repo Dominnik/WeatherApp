@@ -11,44 +11,44 @@ import RealmSwift
 import ObjectMapper
 
 
-class CurrentWeatherModel: Object, Codable {
+struct CurrentWeatherModel: Codable {
     
-    @objc dynamic var id = 0
-    @objc dynamic var name = ""
-    var weather = List<CurrentSky>()
-    @objc dynamic var main: CurrentMain?
-    @objc dynamic var wind: CurrentWind?
-    @objc dynamic var clouds: CurrentClouds?
-    @objc dynamic var sys: CurrentSystem?
+    var id = 0
+    var name = ""
+    var weather = [CurrentSky]()
+    var main: CurrentMain?
+    var wind: CurrentWind?
+    var clouds: CurrentClouds?
+    var sys: CurrentSystem?
 
 }
 
-class CurrentSky: Object, Codable {
+struct CurrentSky: Codable {
     
-     @objc dynamic var icon = ""
+     var icon = ""
 }
 
-class CurrentMain: Object, Codable {
+struct CurrentMain: Codable {
     
-    @objc dynamic var temp: Double = 0.0
-    @objc dynamic var feels_like: Double = 0.0
-    @objc dynamic var temp_min: Double = 0.0
-    @objc dynamic var temp_max: Double = 0.0
-    @objc dynamic var pressure = 0
-    @objc dynamic var humidity = 0
+    var temp: Double = 0.0
+    var feels_like: Double = 0.0
+    var temp_min: Double = 0.0
+    var temp_max: Double = 0.0
+    var pressure = 0
+    var humidity = 0
 }
 
-class CurrentWind: Object, Codable {
+struct CurrentWind: Codable {
     
-    @objc dynamic var speed = 0.0
+    var speed = 0.0
 }
 
-class CurrentClouds: Object, Codable {
+struct CurrentClouds: Codable {
     
-    @objc dynamic var all = 0
+    var all = 0
 }
 
-class CurrentSystem: Object, Codable {
+struct CurrentSystem: Codable {
     
-    @objc dynamic var country = ""
+    var country = ""
 }

@@ -16,11 +16,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m6V-7R-5tw" customClass="CurrentWeatherView" customModule="WeatherApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b6g-mq-l4p">
-                                <rect key="frame" x="0.0" y="88" width="414" height="30"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="30"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ошибка соединения с интернетом. Используйте кэш." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7fT-4K-ke6">
                                         <rect key="frame" x="56" y="8" width="350" height="14.5"/>
@@ -61,7 +61,7 @@
                         <viewLayoutGuide key="safeArea" id="Ui9-yI-Tr3"/>
                     </view>
                     <navigationItem key="navigationItem" title="Загрузка..." id="1Ra-5C-czf">
-                        <barButtonItem key="leftBarButtonItem" enabled="NO" title="Item" image="line.horizontal.3" catalog="system" id="nla-Q8-WBD">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="line.horizontal.3" catalog="system" id="nla-Q8-WBD">
                             <connections>
                                 <action selector="showCacheViewCotrollerAction:" destination="PQJ-Hd-1Rb" id="E48-r4-bVU"/>
                             </connections>
@@ -84,7 +84,7 @@
                         <outlet property="cacheButton" destination="nla-Q8-WBD" id="pSF-Ni-7n4"/>
                         <outlet property="currentWeatherView" destination="m6V-7R-5tw" id="f8V-eh-0XD"/>
                         <outlet property="errorConnectionView" destination="b6g-mq-l4p" id="Jm5-vx-PnI"/>
-                        <segue destination="Ccj-UJ-8Ia" kind="show" identifier="ShowForecastWeather" id="Am0-S1-gFg"/>
+                        <segue destination="Ccj-UJ-8Ia" kind="show" identifier="showForecastWeather" id="Am0-S1-gFg"/>
                         <segue destination="1oa-De-32R" kind="show" identifier="ShowCacheViewController" id="n3c-m8-aT1"/>
                     </connections>
                 </viewController>
@@ -97,11 +97,11 @@
             <objects>
                 <viewController id="1oa-De-32R" customClass="CacheViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EGA-AI-FSw">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ji8-WS-jMg">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cacheCell" textLabel="tl1-2V-1GV" detailTextLabel="lcc-V1-NtW" rowHeight="70" style="IBUITableViewCellStyleSubtitle" id="FDk-TV-xtZ">
@@ -127,6 +127,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="PQJ-Hd-1Rb" kind="show" identifier="showCacheModel" id="4GP-Tv-3Zf"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -176,11 +179,11 @@
             <objects>
                 <viewController id="Ccj-UJ-8Ia" customClass="ForecastViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5Dg-1t-YVF">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EP9-ev-xCx">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="Ccj-UJ-8Ia" id="RKa-YV-kxl"/>
@@ -214,4 +217,7 @@
         <image name="line.horizontal.3" catalog="system" width="64" height="32"/>
         <image name="location.fill" catalog="system" width="64" height="56"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="4GP-Tv-3Zf"/>
+    </inferredMetricsTieBreakers>
 </document>

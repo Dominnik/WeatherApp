@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -56,22 +55,22 @@
                         </constraints>
                     </stackView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="YFl-TF-EE3">
-                        <rect key="frame" x="105" y="10" width="68.666666666666686" height="60"/>
+                        <rect key="frame" x="105" y="10" width="68.5" height="59.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IFP-zp-bS1">
-                                <rect key="frame" x="0.0" y="0.0" width="68.666666666666671" height="14.666666666666666"/>
+                                <rect key="frame" x="0.0" y="0.0" width="68.5" height="14.5"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="760 мм.рт.ст." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XRg-a5-Lng">
-                                <rect key="frame" x="0.0" y="22.666666666666664" width="68.666666666666671" height="14.666666666666664"/>
+                                <rect key="frame" x="0.0" y="22.5" width="68.5" height="14.5"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7 м/с" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xJK-fq-UIm">
-                                <rect key="frame" x="0.0" y="45.333333333333336" width="68.666666666666671" height="14.666666666666664"/>
+                                <rect key="frame" x="0.0" y="45" width="68.5" height="14.5"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -185,7 +184,7 @@
                 <outlet property="pressureValueLabel" destination="XRg-a5-Lng" id="Tb8-NQ-Q7R"/>
                 <outlet property="weatherIconImage" destination="Yh2-GR-7Kt" id="c8Q-mL-JNO"/>
                 <outlet property="weatherValueLabel" destination="XeA-9f-BGd" id="EN3-Sp-McO"/>
-                <outlet property="windSpeeedValueLabel" destination="xJK-fq-UIm" id="ElV-ax-XI5"/>
+                <outlet property="windSpeedValueLabel" destination="xJK-fq-UIm" id="ElV-ax-XI5"/>
             </connections>
             <point key="canvasLocation" x="171.73913043478262" y="192.79891304347828"/>
         </tableViewCell>

@@ -21,6 +21,7 @@ class CurrentDayViewController: UIViewController, CurrentWeatherViewDelegate, CL
     var cityInfo: String?
     var currentCity: String?
     var locationManager = CLLocationManager()
+    var forecastViewController = ForecastViewController()
     var geoCoder = CLGeocoder()
     
     let reachability = try! Reachability()
@@ -50,6 +51,7 @@ class CurrentDayViewController: UIViewController, CurrentWeatherViewDelegate, CL
         reachability.whenUnreachable = { _ in
             self.connection = false
             self.cacheButton.isEnabled = true
+            self.currentWeatherView.delegate = self
             self.errorConnectionView.isHidden = false
             self.errorConnectionView.flash()
         }
@@ -78,7 +80,7 @@ class CurrentDayViewController: UIViewController, CurrentWeatherViewDelegate, CL
     }
     
     func goToForecastViewController() {
-        performSegue(withIdentifier: "ShowForecastWeather", sender: self)
+        performSegue(withIdentifier: "showForecastWeather", sender: self)
     }
     
     func showAlertAction(title: String, message: String, placeholder: String) {
@@ -100,6 +102,7 @@ class CurrentDayViewController: UIViewController, CurrentWeatherViewDelegate, CL
             } else {
                 self.currentWeatherRealmModel = StorageManager.findCurrentWeatherByName(textField.text!).first
                 self.setupWeatherFromCache()
+                
             }
         }))
     }
@@ -170,21 +173,21 @@ class CurrentDayViewController: UIViewController, CurrentWeatherViewDelegate, CL
     private func setupWeatherFromCache() {
         
         if currentWeatherRealmModel != nil {
-            print(currentWeatherRealmModel!)
+
             navigationItem.title = currentWeatherRealmModel!.name + ", " + currentWeatherRealmModel!.country
-            currentWeatherView.helloLabel?.text = String(format: "%.0f", (currentWeatherRealmModel!.temp) - 273.15) + "°C"
+            currentWeatherView.tempLabel?.text = String(format: "%.0f", (currentWeatherRealmModel!.temp) - 273.15) + "°C"
             currentWeatherView.pressureLabel?.text = String(format: "%.0f", Double(currentWeatherRealmModel!.pressure) * 0.75) + " мм рт. ст."
             currentWeatherView.humidityLabel?.text = String(currentWeatherRealmModel!.humidity) + " %"
             currentWeatherView.windSpeedLabel?.text = String(currentWeatherRealmModel!.speed) + " м/с"
             currentWeatherView.cloudsLabel?.text = String(currentWeatherRealmModel!.cloudy) + " %"
-
+            self.cityInfo = currentWeatherRealmModel!.name
         }
     }
     
     private func currentWeatherUpdate(from result: CurrentWeatherModel) {
         navigationItem.title = result.name + ", " + result.sys!.country
         
-        currentWeatherView.helloLabel?.text = String(format: "%.0f", (result.main!.temp) - 273,15) + "°C"
+        currentWeatherView.tempLabel?.text = String(format: "%.0f", (result.main!.temp) - 273,15) + "°C"
         
         if let pressure = result.main?.pressure {
             currentWeatherView.pressureLabel?.text = String(format: "%.0f", Double(pressure) * 0.75) + " мм рт. ст."
@@ -217,12 +220,14 @@ class CurrentDayViewController: UIViewController, CurrentWeatherViewDelegate, CL
     }
     @IBAction func showCacheViewCotrollerAction(_ sender: UIBarButtonItem) {
         self.performSegue(withIdentifier: "ShowCacheViewController", sender: self)
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         guard let forecastViewController = segue.destination as? ForecastViewController else { return }
         forecastViewController.cityInfo = cityInfo
+        forecastViewController.connection = connection
         
         let backItem = UIBarButtonItem()
         backItem.title = "Сегодня"

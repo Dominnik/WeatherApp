@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -11,11 +10,11 @@
             <connections>
                 <outlet property="backgroundView" destination="pRB-nV-epl" id="jAp-uG-43G"/>
                 <outlet property="cloudsLabel" destination="cUU-bb-qq6" id="dAT-7h-ETd"/>
-                <outlet property="helloLabel" destination="UIs-J0-pr9" id="Qnc-oh-aSt"/>
                 <outlet property="humidityLabel" destination="Q0O-dd-6LO" id="77X-ea-bh3"/>
                 <outlet property="iconImageView" destination="3ND-J6-UB1" id="tW7-2B-J07"/>
                 <outlet property="mainView" destination="iN0-l3-epB" id="yc1-O6-IBZ"/>
                 <outlet property="pressureLabel" destination="nwH-YY-DF6" id="55d-82-Zvh"/>
+                <outlet property="tempLabel" destination="UIs-J0-pr9" id="Qnc-oh-aSt"/>
                 <outlet property="windSpeedLabel" destination="Hq8-MA-Gwc" id="TKG-46-QTD"/>
             </connections>
         </placeholder>
@@ -126,28 +125,28 @@
                                     </subviews>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="47" translatesAutoresizingMaskIntoConstraints="NO" id="y7G-TX-ldj">
-                                    <rect key="frame" x="342" y="21" width="40.666666666666686" height="261"/>
+                                    <rect key="frame" x="341.5" y="21" width="41" height="261"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(nil)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nwH-YY-DF6">
-                                            <rect key="frame" x="0.0" y="0.0" width="40.666666666666664" height="30"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="41" height="30"/>
                                             <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="25"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(nil)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hq8-MA-Gwc">
-                                            <rect key="frame" x="0.0" y="77" width="40.666666666666664" height="30"/>
+                                            <rect key="frame" x="0.0" y="77" width="41" height="30"/>
                                             <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="25"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(nil)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q0O-dd-6LO">
-                                            <rect key="frame" x="0.0" y="154" width="40.666666666666664" height="30"/>
+                                            <rect key="frame" x="0.0" y="154" width="41" height="30"/>
                                             <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="25"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(nil)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cUU-bb-qq6">
-                                            <rect key="frame" x="0.0" y="231" width="40.666666666666664" height="30"/>
+                                            <rect key="frame" x="0.0" y="231" width="41" height="30"/>
                                             <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="25"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
