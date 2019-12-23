@@ -82,6 +82,7 @@
                     <size key="freeformSize" width="414" height="896"/>
                     <connections>
                         <outlet property="cacheButton" destination="nla-Q8-WBD" id="pSF-Ni-7n4"/>
+                        <outlet property="currentLocationButton" destination="jhZ-Nb-EUo" id="fET-pC-JGA"/>
                         <outlet property="currentWeatherView" destination="m6V-7R-5tw" id="f8V-eh-0XD"/>
                         <outlet property="errorConnectionView" destination="b6g-mq-l4p" id="Jm5-vx-PnI"/>
                         <segue destination="Ccj-UJ-8Ia" kind="show" identifier="showForecastWeather" id="Am0-S1-gFg"/>
@@ -95,7 +96,7 @@
         <!--Cache-->
         <scene sceneID="nyI-aE-Tq8">
             <objects>
-                <viewController id="1oa-De-32R" customClass="CacheViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="crossDissolve" id="1oa-De-32R" customClass="CacheViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EGA-AI-FSw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -218,7 +219,6 @@
         <image name="location.fill" catalog="system" width="64" height="56"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="n3c-m8-aT1"/>
         <segue reference="4GP-Tv-3Zf"/>
     </inferredMetricsTieBreakers>
 </document>

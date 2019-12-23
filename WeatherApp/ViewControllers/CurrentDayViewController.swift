@@ -16,6 +16,7 @@ class CurrentDayViewController: UIViewController, CurrentWeatherViewDelegate, CL
     @IBOutlet weak var errorConnectionView: UIView!
     @IBOutlet weak var currentWeatherView: CurrentWeatherView!
     @IBOutlet weak var cacheButton: UIBarButtonItem!
+    @IBOutlet weak var currentLocationButton: UIBarButtonItem!
     
     var currentWeatherRealmModel: CurrentWeatherRealmModel?
     var cityInfo: String?
@@ -115,16 +116,17 @@ class CurrentDayViewController: UIViewController, CurrentWeatherViewDelegate, CL
     }
     
     @IBAction func goToCurrentLocationAction(_ sender: UIBarButtonItem) {
-        
-        testingConnection(reachability)
-        if currentCity != nil {
-            self.locationManager.delegate = self
-            self.locationManager.startUpdatingLocation()
-            self.currentWeatherRequest(with: self.currentCity ?? self.cityInfo!)
-            self.locationManager.stopUpdatingLocation()
-        } else {
-            self.showErrorAlert()
-        }
+
+
+            testingConnection(reachability)
+            if currentCity != nil {
+                self.locationManager.delegate = self
+                self.locationManager.startUpdatingLocation()
+                self.currentWeatherRequest(with: self.currentCity ?? self.cityInfo!)
+                self.locationManager.stopUpdatingLocation()
+            } else {
+                self.showErrorAlert()
+            }
     }
     
     @IBAction func newCitySearchBarButton(_ sender: UIBarButtonItem) {
