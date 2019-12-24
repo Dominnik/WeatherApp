@@ -15,8 +15,6 @@ class CurrentWeatherRealmModel: Object {
     @objc dynamic var country = ""
     @objc dynamic var icon = ""
     @objc dynamic var temp: Double = 0.0
-    @objc dynamic var tempMin: Double = 0.0
-    @objc dynamic var tempMax: Double = 0.0
     @objc dynamic var pressure = 0
     @objc dynamic var humidity = 0
     @objc dynamic var speed = 0.0
@@ -26,18 +24,14 @@ class CurrentWeatherRealmModel: Object {
         return "name"
     }
     
-    convenience init(name: String, country: String, icon: String, temp: Double, tempMin: Double, tempMax: Double, pressure: Int, humidity: Int, speed: Double, cloudy: Int) {
-        
-        self.init()
-        self.name = name
-        self.country = country
-        self.icon = icon
-        self.temp = temp
-        self.tempMin = tempMin
-        self.tempMax = tempMax
-        self.pressure = pressure
-        self.humidity = humidity
-        self.speed = speed
-        self.cloudy = cloudy
+    func getResultFromModel(with result: CurrentWeatherModel) {
+        name = result.name
+        country = result.sys!.country
+        icon = result.weather.first!.icon
+        temp = result.main!.temp
+        pressure = Int(result.main!.pressure)
+        humidity = Int(result.main!.humidity)
+        speed = result.wind!.speed
+        cloudy = result.clouds!.all
     }
 }

@@ -1,5 +1,5 @@
 //
-//  UIViewExtension.swift
+//  UIView.swift
 //  WeatherApp
 //
 //  Created by Andrey Kovalenko on 21.12.2019.

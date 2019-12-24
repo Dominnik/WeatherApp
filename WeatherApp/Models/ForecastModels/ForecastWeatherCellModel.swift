@@ -1,29 +1,19 @@
 //
-//  ForecastWeatherSectionModel.swift
+//  ForecastWeatherCellModel.swift
 //  WeatherApp
 //
-//  Created by Andrey Kovalenko on 17.12.2019.
+//  Created by Andrey Kovalenko on 24.12.2019.
 //  Copyright © 2019 Andrey Kovalenko. All rights reserved.
 //
 
 import UIKit
-
-class ForecastWeatherSectionModel {
-    
-    var date: String = ""
-    var cells: [ForecastWeatherCellModel] = []
-    
-    init(date: String) {
-        self.date = date
-    }
-}
 
 class ForecastWeatherCellModel {
     
     var humidity: Double = 0.0
     var pressure: Int = 0
     var temp: Int = 0
-    var imageUrl: URL? = nil
+    var imageUrl: URL?
     var time: String = ""
     var speed: Double = 0.0
     

@@ -12,8 +12,10 @@ class ForecastViewController: UIViewController {
     
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     private let factory = DateFormatterFactory()
+    
     
     var connection = false
     var cityInfo: String?
@@ -26,7 +28,7 @@ class ForecastViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        navigationItem.title = "Прогноз на 5 дней"
         tableView.register(UINib(nibName: "DailyWeatherCell", bundle: nil), forCellReuseIdentifier: "DailyWeatherCell")
         tableView.register(UINib(nibName: "DailyWeatherHeader", bundle: nil), forHeaderFooterViewReuseIdentifier: "DailyWeatherHeader")
         
@@ -36,22 +38,25 @@ class ForecastViewController: UIViewController {
     
     func forecastWeatherRequest(with cityInfo: String) {
         
-        APIServices.shared.getObject(method: .forecastEventMethod, params: ["q": cityInfo, "appid": "d988069c070ff798d8c1fea149be599a"])
-        {[weak self](result: ForecastWeatherModel?, error: Error?) in
-            if let error = error {
+        activityIndicator.startAnimating()
+        APIServices.shared.getObject(method: .forecastEventMethod, params: ["q": cityInfo, "appid": APIServices.shared.userId])
+        {(res: Result<ForecastWeatherModel, Error>) in
+            switch res {
+            case .success(let result):
+                self.forecastWeatherUpdate(from: result)
+                self.activityIndicator.stopAnimating()
+                self.saveForecastObject(from: result)
+            case .failure(let error):
                 print("\(error)")
-                self?.forecastWeatherRealmModel = StorageManager.findForecastWeatherByName(cityInfo).first
-                self?.setupForecastWeatherFromCache()
-            } else if let forecastResult = result {
-                self?.forecastWeatherUpdate(from: forecastResult)
-                self?.saveForecastObject(from: forecastResult)
+                self.forecastWeatherRealmModel = StorageManager.findObjectByName(cityInfo).first
+                self.setupForecastWeatherFromCache()
+                self.activityIndicator.stopAnimating()
             }
         }
     }
     
     
     private func forecastWeatherUpdate(from result: ForecastWeatherModel) {
-        navigationItem.title = "Прогноз на 5 дней"
         
         sections.removeAll()
         result.list.forEach { day in
@@ -64,9 +69,9 @@ class ForecastViewController: UIViewController {
             section?.cells.append(
                 ForecastWeatherCellModel(
                     humidity: day.main?.humidity ?? 0.0,
-                    pressure: Int((day.main?.pressure ?? 0) * 0.75),
-                    temp: Int((day.main?.temp ?? 273.15) - 273.15),
-                    imageUrl: URL(string: "http://openweathermap.org/img/wn/\(String(describing: day.weather.first!.icon))@2x.png"),
+                    pressure: Int((day.main?.pressure ?? 0).millimetreOfMercury),
+                    temp: Int((day.main?.temp ?? 0.0).celsius),
+                    imageUrl: URL(string: "\(String(describing: day.weather.first!.icon))".iconURL),
                     time: self.factory.timeFormatter.string(from: day.dt_txt),
                     speed: day.wind?.speed ?? 0.0
                 )
@@ -83,7 +88,7 @@ class ForecastViewController: UIViewController {
         
 
         for interval in result.list {
-            let newForecastDay = Day()
+            let newForecastDay = RealmDay()
             newForecastDay.dateAndTime = interval.dt_txt
             newForecastDay.temp = interval.main?.temp ?? 0.000
             newForecastDay.pressure = interval.main?.pressure ?? 0.000
@@ -94,7 +99,7 @@ class ForecastViewController: UIViewController {
             
             newForecastWeatherObject.list.append(newForecastDay)
         }
-        StorageManager.saveForecastObject(newForecastWeatherObject)
+        StorageManager.saveObject(newForecastWeatherObject)
         
     }
     
@@ -112,8 +117,8 @@ class ForecastViewController: UIViewController {
             section?.cells.append(
                 ForecastWeatherCellModel(
                    humidity: day.humidity,
-                   pressure: Int(day.pressure * 0.75),
-                   temp: Int(day.temp - 273.15),
+                   pressure: Int(day.pressure.millimetreOfMercury),
+                   temp: Int(day.temp.celsius),
                    imageUrl: .none,
                    time: self.factory.timeFormatter.string(from: day.dateAndTime),
                    speed: day.windSpeed
@@ -122,28 +127,6 @@ class ForecastViewController: UIViewController {
             
         }
         tableView.reloadData()
-    }
-    
-    
-    private func configureCell(cell: DailyWeatherCell, for indexPath: IndexPath) {
-        let row = sections[indexPath.section].cells[indexPath.row]
-        
-        cell.weatherValueLabel?.text = String(row.temp) + "°C"
-        cell.dateValueLabel?.text = row.time
-        cell.humidityValueLabel?.text = String(row.humidity) + "%"
-        cell.pressureValueLabel?.text = String(row.pressure) + "мм рт.ст."
-        cell.windSpeedValueLabel?.text = String(row.speed) + "м/с"
-        
-        
-        DispatchQueue.global().async {
-            
-            guard let iconUrl = row.imageUrl else { return }
-            guard let imageData = try? Data(contentsOf: iconUrl) else { return }
-            
-            DispatchQueue.main.async {
-                cell.weatherIconImage.image = UIImage(data: imageData)
-            }
-        }
     }
 }
 
@@ -155,9 +138,7 @@ extension ForecastViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DailyWeatherCell", for: indexPath) as! DailyWeatherCell
-        
-        configureCell(cell: cell, for: indexPath)
-        
+        cell.configureCell(for: sections, and: indexPath)
         return cell
     }
     
@@ -166,6 +147,7 @@ extension ForecastViewController: UITableViewDataSource {
         headerView.dateLabel?.text = sections[section].date
         return headerView
     }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count
     }

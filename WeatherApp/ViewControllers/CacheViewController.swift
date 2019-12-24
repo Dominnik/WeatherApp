@@ -9,7 +9,13 @@
 import UIKit
 import RealmSwift
 
+protocol CacheDataDelegate: class {
+    func sendCacheModel(_ currentCachedWeatherRealmModel: CurrentWeatherRealmModel)
+}
+
 class CacheViewController: UIViewController {
+    
+    weak var delegate: CacheDataDelegate?
 
     @IBOutlet weak var cacheTableView: UITableView!
     
@@ -24,19 +30,6 @@ class CacheViewController: UIViewController {
     }
 
     // MARK: - Navigation
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
-        if segue.identifier == "showCacheModel" {
-            
-            guard let indexPath = cacheTableView.indexPathForSelectedRow else { return }
-            let currentWeatherRealmModel: CurrentWeatherRealmModel
-            currentWeatherRealmModel = weatherRecords[indexPath.row]
-            
-            let newCachedViewController = segue.destination as! CurrentDayViewController
-            newCachedViewController.currentWeatherRealmModel = currentWeatherRealmModel
-        }
-    }
 }
 
 extension CacheViewController: UITableViewDataSource {
@@ -49,13 +42,19 @@ extension CacheViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cacheCell", for: indexPath)
         
         let weatherRecord = weatherRecords[indexPath.row]
-        
         cell.textLabel?.text = weatherRecord.name
-        cell.detailTextLabel?.text = String(format:"%.0f", (weatherRecord.temp - 273.15)) + " °C"
+        cell.detailTextLabel?.text = String(format:"%.0f", (weatherRecord.temp.celsius)).celsius
         
         return cell
     }
+}
+extension CacheViewController: UITableViewDelegate {
     
-    
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let indexPath = cacheTableView.indexPathForSelectedRow else { return }
+        let currentWeatherRealmModel: CurrentWeatherRealmModel
+        currentWeatherRealmModel = weatherRecords[indexPath.row]
+        delegate?.sendCacheModel(currentWeatherRealmModel)
+        dismiss(animated: true, completion: nil)
+    }
 }

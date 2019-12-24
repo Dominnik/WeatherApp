@@ -13,44 +13,18 @@ let realm = try! Realm()
 
 struct StorageManager {
     
-    static func saveObject(_ weatherModel: CurrentWeatherRealmModel) {
+    static func saveObject<T: Object>(_ object: T) {
         
         try! realm.write {
-            realm.add(weatherModel, update: .modified)
+            realm.add(object, update: .modified)
             
         }
     }
     
-    static func findCurrentWeatherByName(_ name: String) -> Results<CurrentWeatherRealmModel> {
+    static func findObjectByName<T: Object>(_ name: String) -> Results<T> {
         
         let predicate = NSPredicate(format: "name = %@", name)
-        return realm.objects(CurrentWeatherRealmModel.self).filter(predicate)
+        return realm.objects(T.self).filter(predicate)
 
-    }
-    
-    static func findForecastWeatherByName(_ name: String) -> Results<ForecastWeatherRealmModel> {
-        
-        let predicate = NSPredicate(format: "name = %@", name)
-        return realm.objects(ForecastWeatherRealmModel.self).filter(predicate)
-    }
-    
-    static func saveForecastObject(_ forecastWeatherModel: ForecastWeatherRealmModel) {
-        
-        try! realm.write {
-            realm.add(forecastWeatherModel, update: .all)
-        }
-    }
-    
-    static func deleteObject(_ currentWeatherModel: CurrentWeatherRealmModel, _ forecastWeatherModel: ForecastWeatherRealmModel) {
-        try! realm.write {
-            realm.delete(currentWeatherModel)
-            realm.delete(forecastWeatherModel)
-        }
-    }
-    
-    static func clearDatabase() {
-        try! realm.write {
-            realm.deleteAll()
-        }
     }
 }

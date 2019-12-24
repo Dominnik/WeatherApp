@@ -16,11 +16,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m6V-7R-5tw" customClass="CurrentWeatherView" customModule="WeatherApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b6g-mq-l4p">
-                                <rect key="frame" x="0.0" y="44" width="414" height="30"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="30"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ошибка связи с интернетом. Используйте кэш." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7fT-4K-ke6">
                                         <rect key="frame" x="56" y="8" width="350" height="14.5"/>
@@ -63,7 +63,7 @@
                     <navigationItem key="navigationItem" title="Загрузка..." id="1Ra-5C-czf">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="line.horizontal.3" catalog="system" id="nla-Q8-WBD">
                             <connections>
-                                <action selector="showCacheViewCotrollerAction:" destination="PQJ-Hd-1Rb" id="E48-r4-bVU"/>
+                                <action selector="showCacheViewCotrollerAction:" destination="PQJ-Hd-1Rb" id="8a3-Or-9Hk"/>
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
@@ -86,23 +86,22 @@
                         <outlet property="currentWeatherView" destination="m6V-7R-5tw" id="f8V-eh-0XD"/>
                         <outlet property="errorConnectionView" destination="b6g-mq-l4p" id="Jm5-vx-PnI"/>
                         <segue destination="Ccj-UJ-8Ia" kind="show" identifier="showForecastWeather" id="Am0-S1-gFg"/>
-                        <segue destination="1oa-De-32R" kind="show" identifier="ShowCacheViewController" id="n3c-m8-aT1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qYq-IH-Hfo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3853.6231884057975" y="12.723214285714285"/>
+            <point key="canvasLocation" x="3951" y="729"/>
         </scene>
         <!--Cache-->
         <scene sceneID="nyI-aE-Tq8">
             <objects>
-                <viewController modalTransitionStyle="crossDissolve" id="1oa-De-32R" customClass="CacheViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CacheViewController" modalTransitionStyle="crossDissolve" id="1oa-De-32R" customClass="CacheViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EGA-AI-FSw">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ji8-WS-jMg">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cacheCell" textLabel="tl1-2V-1GV" detailTextLabel="lcc-V1-NtW" rowHeight="70" style="IBUITableViewCellStyleSubtitle" id="FDk-TV-xtZ">
@@ -128,9 +127,6 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="PQJ-Hd-1Rb" kind="show" identifier="showCacheModel" id="4GP-Tv-3Zf"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -155,7 +151,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ayi-V1-jHC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3099" y="740"/>
+            <point key="canvasLocation" x="4903" y="-15"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="JwD-bm-odO">
@@ -173,29 +169,35 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Inv-3c-eoh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2977" y="13"/>
+            <point key="canvasLocation" x="3952" y="-15"/>
         </scene>
         <!--Forecast View Controller-->
         <scene sceneID="0pN-UI-iT8">
             <objects>
                 <viewController id="Ccj-UJ-8Ia" customClass="ForecastViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5Dg-1t-YVF">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EP9-ev-xCx">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="Ccj-UJ-8Ia" id="RKa-YV-kxl"/>
                                     <outlet property="delegate" destination="Ccj-UJ-8Ia" id="evc-oj-cOE"/>
                                 </connections>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="zcN-8n-VzU">
+                                <rect key="frame" x="188.5" y="456.5" width="37" height="37"/>
+                                <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="EP9-ev-xCx" firstAttribute="top" secondItem="5Dg-1t-YVF" secondAttribute="top" id="4bl-HN-Xpf"/>
                             <constraint firstAttribute="bottom" secondItem="EP9-ev-xCx" secondAttribute="bottom" id="G4D-gN-Mav"/>
+                            <constraint firstItem="zcN-8n-VzU" firstAttribute="centerY" secondItem="zLs-OH-TJT" secondAttribute="centerY" id="KyH-fK-uYo"/>
+                            <constraint firstItem="zcN-8n-VzU" firstAttribute="centerX" secondItem="zLs-OH-TJT" secondAttribute="centerX" id="Wu1-Lu-iQP"/>
                             <constraint firstItem="EP9-ev-xCx" firstAttribute="leading" secondItem="zLs-OH-TJT" secondAttribute="leading" id="am0-iH-Fxl"/>
                             <constraint firstItem="EP9-ev-xCx" firstAttribute="trailing" secondItem="zLs-OH-TJT" secondAttribute="trailing" id="bPT-xL-Q5f"/>
                         </constraints>
@@ -205,12 +207,13 @@
                         <barButtonItem key="backBarButtonItem" title="Сейчас" id="cRZ-cR-ylQ"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="zcN-8n-VzU" id="inX-1p-2Zh"/>
                         <outlet property="tableView" destination="EP9-ev-xCx" id="FXX-sa-C4c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VYF-9I-FbE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4829" y="13"/>
+            <point key="canvasLocation" x="4903" y="729"/>
         </scene>
     </scenes>
     <resources>
@@ -218,7 +221,4 @@
         <image name="line.horizontal.3" catalog="system" width="64" height="32"/>
         <image name="location.fill" catalog="system" width="64" height="56"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="4GP-Tv-3Zf"/>
-    </inferredMetricsTieBreakers>
 </document>

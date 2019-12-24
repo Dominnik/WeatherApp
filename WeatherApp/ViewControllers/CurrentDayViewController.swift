@@ -19,6 +19,7 @@ class CurrentDayViewController: UIViewController, CurrentWeatherViewDelegate, CL
     @IBOutlet weak var currentLocationButton: UIBarButtonItem!
     
     var currentWeatherRealmModel: CurrentWeatherRealmModel?
+    var cachedViewController: CacheViewController?
     var cityInfo: String?
     var currentCity: String?
     var locationManager = CLLocationManager()
@@ -33,7 +34,7 @@ class CurrentDayViewController: UIViewController, CurrentWeatherViewDelegate, CL
         
         testingConnection(reachability)
         reachability.stopNotifier()
-        setupWeatherFromCache()  
+//        currentWeatherView.setupWeatherFromCache(currentWeatherRealmModel!)
     }
     
     func testingConnection(_ reachability: Reachability) {
@@ -93,16 +94,24 @@ class CurrentDayViewController: UIViewController, CurrentWeatherViewDelegate, CL
         self.present(newCityAlert, animated: true, completion: nil)
         
         newCityAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) in
+            self.currentWeatherView.activityLoader.startAnimating()
             let textField = newCityAlert.textFields![0]
             
             guard textField.text?.isEmpty == false else { return }
             if self.connection {
                 self.currentWeatherRequest(with: textField.text!)
             } else {
-                self.currentWeatherRealmModel = StorageManager.findCurrentWeatherByName(textField.text!).first
-                self.setupWeatherFromCache()
-                
+                self.currentWeatherRealmModel = StorageManager.findObjectByName(textField.text!).first
+                self.navigationItem.title = self.currentWeatherRealmModel?.name
+                self.cityInfo = self.currentWeatherRealmModel?.name
+                if self.currentWeatherRealmModel != nil {
+                    self.currentWeatherView.setupWeatherFromCache(self.currentWeatherRealmModel!)
+                } else {
+                    self.showErrorAlert()
+                }
+
             }
+            self.currentWeatherView.activityLoader.stopAnimating()
         }))
     }
     
@@ -110,16 +119,15 @@ class CurrentDayViewController: UIViewController, CurrentWeatherViewDelegate, CL
         let newErrorAlert = UIAlertController(title: "Ошибка интернет соединения", message: "Просмотрите сохраненную ранее погоду", preferredStyle: .alert)
         
         newErrorAlert.addAction(UIAlertAction(title: "Выбрать", style: .default, handler: { (UIAlertAction) in
-            self.performSegue(withIdentifier: "ShowCacheViewController", sender: self)
+            self.showCacheViewController()
         }))
         self.present(newErrorAlert, animated: true, completion: nil)
     }
     
     @IBAction func goToCurrentLocationAction(_ sender: UIBarButtonItem) {
 
-
             testingConnection(reachability)
-            if currentCity != nil {
+            if currentCity != nil && connection {
                 self.locationManager.delegate = self
                 self.locationManager.startUpdatingLocation()
                 self.currentWeatherRequest(with: self.currentCity ?? self.cityInfo!)
@@ -134,22 +142,29 @@ class CurrentDayViewController: UIViewController, CurrentWeatherViewDelegate, CL
             self.showAlertAction(title: "Новый город", message: "Введите название", placeholder: "Название города")
     }
     
+    
     //MARK: - Alamofire request
     
     func currentWeatherRequest(with cityInfo: String) {
-        APIServices.shared.getObject(method: .currentEventMethod, params: ["q": cityInfo, "appid": "d988069c070ff798d8c1fea149be599a"])
-        {[weak self](result: CurrentWeatherModel?, error: Error?) in
-            if let error = error {
+        currentWeatherView.activityLoader.startAnimating()
+        
+        APIServices.shared.getObject(method: .currentEventMethod, params: ["q": cityInfo, "appid": APIServices.shared.userId]) {
+            (res: Result<CurrentWeatherModel, Error>) in
+            switch res {
+            case .success(let result):
+                self.cityInfo = cityInfo
+                self.navigationItem.title = cityInfo
+                self.currentWeatherView.configure(with: result)
+                self.currentWeatherView.activityLoader.stopAnimating()
+                self.locationManager.stopUpdatingLocation()
+                self.saveObject(from: result)
+            case .failure(let error):
                 print("\(error)")
-                self?.showAlertAction(title: "Ошибка",
+                self.currentWeatherView.activityLoader.stopAnimating()
+                self.showAlertAction(title: "Ошибка",
                                       message: "Введите корректное имя города или проверьте интернет соединение",
                                       placeholder: "Название города")
-                self?.testingConnection(self!.reachability)
-            } else if let currentResult = result {
-                self?.cityInfo = cityInfo
-                self?.navigationItem.title = cityInfo
-                self?.currentWeatherUpdate(from: currentResult)
-                self?.saveObject(from: currentResult)
+                self.testingConnection(self.reachability)
             }
         }
     }
@@ -157,79 +172,21 @@ class CurrentDayViewController: UIViewController, CurrentWeatherViewDelegate, CL
     //MARK: - Work with database
     
     func saveObject(from result: CurrentWeatherModel) {
-        
-        
-        let newWeather = CurrentWeatherRealmModel(name: result.name,
-                                                  country: result.sys!.country,
-                                                  icon: result.weather.first!.icon,
-                                                  temp: result.main!.temp,
-                                                  tempMin: result.main!.temp_min,
-                                                  tempMax: result.main!.temp_max,
-                                                  pressure: result.main!.pressure,
-                                                  humidity: result.main!.humidity,
-                                                  speed: result.wind!.speed,
-                                                  cloudy: result.clouds!.all)
-        StorageManager.saveObject(newWeather)
-        
-    }
-    
-    private func setupWeatherFromCache() {
-        
-        testingConnection(reachability)
-        if currentWeatherRealmModel != nil {
-            if connection == false {
 
-            navigationItem.title = currentWeatherRealmModel!.name + ", " + currentWeatherRealmModel!.country
-            currentWeatherView.tempLabel?.text = String(format: "%.0f", (currentWeatherRealmModel!.temp) - 273.15) + "°C"
-            currentWeatherView.pressureLabel?.text = String(format: "%.0f", Double(currentWeatherRealmModel!.pressure) * 0.75) + " мм рт. ст."
-            currentWeatherView.humidityLabel?.text = String(currentWeatherRealmModel!.humidity) + " %"
-            currentWeatherView.windSpeedLabel?.text = String(currentWeatherRealmModel!.speed) + " м/с"
-            currentWeatherView.cloudsLabel?.text = String(currentWeatherRealmModel!.cloudy) + " %"
-            self.cityInfo = currentWeatherRealmModel!.name
-            
-            } else {
-                currentWeatherRequest(with: currentWeatherRealmModel!.name)
-            }
-        }
+        let newWeather = CurrentWeatherRealmModel()
+        newWeather.getResultFromModel(with: result)
+        StorageManager.saveObject(newWeather)
     }
     
-    private func currentWeatherUpdate(from result: CurrentWeatherModel) {
-        navigationItem.title = result.name + ", " + result.sys!.country
+    func showCacheViewController() {
         
-        currentWeatherView.tempLabel?.text = String(format: "%.0f", (result.main!.temp) - 273,15) + "°C"
-        
-        if let pressure = result.main?.pressure {
-            currentWeatherView.pressureLabel?.text = String(format: "%.0f", Double(pressure) * 0.75) + " мм рт. ст."
-        }
-        if let windSpeed = result.wind?.speed {
-            currentWeatherView.windSpeedLabel?.text = String(windSpeed) + " м/с"
-        }
-        if let humidity = result.main?.humidity {
-            currentWeatherView.humidityLabel?.text = String(humidity) + " %"
-        }
-        if let overcast = result.clouds?.all {
-            currentWeatherView.cloudsLabel?.text = String(overcast) + " %"
-        }
-        let icons = result.weather.compactMap { day in
-            return day
-        }
-        DispatchQueue.global().async {
-            
-            if let icon = icons.first?.icon {
-                
-                guard let iconUrl = URL(string: "http://openweathermap.org/img/wn/\(icon)@2x.png") else { return }
-                guard let imageData = try? Data(contentsOf: iconUrl) else { return }
-                
-                DispatchQueue.main.async {
-                    
-                    self.currentWeatherView.iconImageView.image = UIImage(data: imageData)
-                }
-            }
-        }
+        let cachedViewController = storyboard?.instantiateViewController(identifier: "CacheViewController") as! CacheViewController
+        cachedViewController.delegate = self
+        present(cachedViewController, animated: true, completion: nil)
     }
+    
     @IBAction func showCacheViewCotrollerAction(_ sender: UIBarButtonItem) {
-        self.performSegue(withIdentifier: "ShowCacheViewController", sender: self)
-        
+        showCacheViewController()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -242,7 +199,22 @@ class CurrentDayViewController: UIViewController, CurrentWeatherViewDelegate, CL
         backItem.title = "Сегодня"
         navigationItem.backBarButtonItem = backItem
     }
-    
 }
+
+extension CurrentDayViewController: CacheDataDelegate {
+    func sendCacheModel(_ currentCachedWeatherRealmModel: CurrentWeatherRealmModel) {
+        navigationItem.title = currentCachedWeatherRealmModel.name + ", " + currentCachedWeatherRealmModel.country
+        currentWeatherView.tempLabel?.text = String(format: "%.0f", (currentCachedWeatherRealmModel.temp).celsius).celsius
+        currentWeatherView.pressureLabel?.text = String(format: "%.0f", Double(currentCachedWeatherRealmModel.pressure).millimetreOfMercury).millimetreOfMercury
+        currentWeatherView.humidityLabel?.text = String(currentCachedWeatherRealmModel.humidity).percent
+        currentWeatherView.windSpeedLabel?.text = String(currentCachedWeatherRealmModel.speed).metersPerSecond
+        currentWeatherView.cloudsLabel?.text = String(currentCachedWeatherRealmModel.cloudy).percent
+        self.cityInfo = currentCachedWeatherRealmModel.name
+    }
+}
+
+
+
+
 
 
